@@ -1,0 +1,20 @@
+<center><h1>Buyurtmalar ro`yxati</h1></center>
+<form>
+     <input name="q_soz" type="text" placeholder="Mijoz kiriting..."
+     {%if q_soz%} value="{{q_soz}}" {%endif%}>
+    <button>Qidirish</button>
+    <a href="/buyurtmalar"><button type="button">Tozalash</button></a>
+</form>
+<hr>
+{% for buyurtma in buyurtmalar%}
+
+<p><a href="/buyurtmalar/{{buyurtma.id}}">{{forloop.counter}}.{{buyurtma.mijoz_id}} - {{buyurtma.mahsulot_id}}</a>  <a href="/buyurtmalar/{{buyurtma.id}}/delete"> <button>Delete</button></a></p>
+{%endfor%}
+
+
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>Qo`shish</button>
+
+</form>

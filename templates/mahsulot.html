@@ -1,0 +1,21 @@
+<center><h1>Maxsulotlar ro`yxati</h1></center>
+<form>
+     <input name="q_soz" type="text" placeholder="Mahsulot kiriting..."
+     {%if q_soz%} value="{{q_soz}}" {%endif%}>
+    <button>Qidirish</button>
+    <a href="/mahsulotlar"><button type="button">Tozalash</button></a>
+</form>
+<hr>
+{% for mahsulot in mahsulotlar %}
+<p>
+<a href="/mahsulotlar/{{mahsulot.id}}/">{{forloop.counter}}.{{mahsulot.mahsulot_nomi}}</a>  <a href="/mahsulotlar/{{mahsulot.id}}/update/"><button>Tahrirlash</button></a> <a href="/mahsulotlar/{{mahsulot.id}}/delete/"><button>Delete</button></a></p>
+{%endfor%}
+
+<hr>
+
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>Qo`shish</button>
+
+</form>

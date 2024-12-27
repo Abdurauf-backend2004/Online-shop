@@ -1,0 +1,20 @@
+<center><h1>Mijozlar ro`yxati</h1></center>
+<form>
+     <input name="q_soz" type="text" placeholder="Ism kiriting..."
+     {%if q_soz%} value="{{q_soz}}" {%endif%}>
+    <button>Qidirish</button>
+    <a href="/mijozlar"><button type="button">Tozalash</button></a>
+
+</form>
+<hr>
+{% for mijoz in mijozlar%}
+
+<p><a href="/mijozlar/{{mijoz.id}}">{{forloop.counter}}.{{mijoz.ism}}  {{mijoz.familya}}</a>  <a href="/mijozlar/{{mijoz.id}}/delete/"><button>Delete</button></a></p>
+{%endfor%}
+
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>Qo`shish</button>
+
+</form>
